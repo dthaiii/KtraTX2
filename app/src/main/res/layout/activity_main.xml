@@ -10,21 +10,39 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tv_product"
+        android:id="@+id/tv_name"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Product" />
+        android:hint="Họ và tên" />
 
     <TextView
-        android:id="@+id/tv_price"
+        android:id="@+id/tv_phone"
         android:textSize="18sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Price" />
+        android:hint="Số điện thoại" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Email" />
+
+    <TextView
+        android:id="@+id/tv_relationship"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textSize="18sp"
+        android:inputType="text"
+        android:hint="Quan hệ" />
 
     <ListView
         android:id="@+id/lv_note"

@@ -17,7 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class EditProduct extends AppCompatActivity {
     private TextView tvId;
-    private EditText edtTitle, edtContent;
+    private EditText edtTitle, edtContent, edtEmail, edtRela;
     private Button btnUpdate, btnClose;
     Product product;
     Intent intent;
@@ -38,14 +38,18 @@ public class EditProduct extends AppCompatActivity {
         tvId.setText(""+product.getId());
         edtTitle.setText(product.getName());
         edtContent.setText(String.valueOf(product.getPrice()));
+        edtEmail.setText(product.getEmail());
+        edtRela.setText(product.getRela());
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtTitle.getText().toString().trim().length() < 3 || edtContent.getText().toString().trim().length() < 3) {
+                if (edtTitle.getText().toString().trim().length() < 3 || edtContent.getText().toString().trim().length() < 3 || edtEmail.getText().toString().trim().length() < 3 || edtRela.getText().toString().trim().length() < 3) {
                     Toast.makeText(EditProduct.this, "Dữ liệu không hợp lệ", Toast.LENGTH_SHORT).show();
                 } else {
                     product.setName(edtTitle.getText().toString());
-                    product.setPrice(Float.parseFloat(edtContent.getText().toString()));
+                    product.setPrice(Integer.parseInt(edtContent.getText().toString()));
+                    product.setEmail(edtEmail.getText().toString());
+                    product.setRela(edtRela.getText().toString());
                     intent.putExtra("product", product);
                     setResult(888, intent);
                     finish();
@@ -65,6 +69,8 @@ public class EditProduct extends AppCompatActivity {
         tvId = findViewById(R.id.tv_id_edit);
         edtTitle = findViewById(R.id.edt_title_edit);
         edtContent = findViewById(R.id.edt_content_edit);
+        edtEmail = findViewById(R.id.edt_email_edit);
+        edtRela = findViewById(R.id.edt_rela_edit);
         btnUpdate = findViewById(R.id.btn_update_edit);
         btnClose = findViewById(R.id.btn_close_edit);
     }

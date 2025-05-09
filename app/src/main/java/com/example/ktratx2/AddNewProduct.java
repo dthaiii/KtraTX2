@@ -16,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AddNewProduct extends AppCompatActivity {
     TextView tvID;
-    EditText edtProduct, edtPrice;
+    EditText edtProduct, edtPrice, edtEmail, edtRela;
     Button btnSave, btnClose;
 
     @Override
@@ -35,7 +35,7 @@ public class AddNewProduct extends AppCompatActivity {
             if ((edtProduct.getText().toString().trim().length() < 3) || (edtProduct.getText().toString().trim().length() < 3)) {
                 Toast.makeText(AddNewProduct.this, "Dữ liệu nhập phải lớn hơn 2 ký tự", Toast.LENGTH_SHORT).show();
             } else {
-                Product product = new Product(0, edtProduct.getText().toString(), Float.parseFloat(edtPrice.getText().toString()));
+                Product product = new Product(0, edtProduct.getText().toString(), Integer.parseInt(edtPrice.getText().toString()), edtEmail.getText().toString(), edtRela.getText().toString());
                 intent.putExtra("product", product);
                 setResult(999, intent);
                 finish();
@@ -48,6 +48,8 @@ public class AddNewProduct extends AppCompatActivity {
         tvID = findViewById(R.id.tv_id);
         edtProduct = findViewById(R.id.edt_product);
         edtPrice = findViewById(R.id.edt_price);
+        edtEmail = findViewById(R.id.edt_email);
+        edtRela = findViewById(R.id.edt_rela);
         btnSave = findViewById(R.id.btn_save);
         btnClose = findViewById(R.id.btn_close);
     }

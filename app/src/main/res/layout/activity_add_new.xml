@@ -32,6 +32,22 @@
         android:gravity="start|top"
         android:inputType="number" />
 
+    <EditText
+        android:id="@+id/edt_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/edt_rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Quan hệ" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
