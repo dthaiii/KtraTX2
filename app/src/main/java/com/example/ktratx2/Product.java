@@ -41,7 +41,7 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public float getPrice() {
+    public int getPrice() {
         return price;
     }
 

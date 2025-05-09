@@ -64,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
                     intent = o.getData();
                     Product product = (Product) intent.getSerializableExtra("product");
                     //them du lieu vao bang
-                    String sql = "INSERT INTO Product(title, content) VALUES('"+product.getName()+"', '"+product.getPrice()+"','"+product.getEmail()+"','"+product.getRela()+"')";
+                    String sql = "INSERT INTO Product(title, content, email, rela) VALUES('"
+                            + product.getName() + "', '"
+                            + product.getPrice() + "', '"
+                            + product.getEmail() + "', '"
+                            + product.getRela() + "')";
                     productManagement.myExecute(sql);
                     readProductManagement(productManagement);
                 }
@@ -72,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
                     intent = o.getData();
                     Product product = (Product) intent.getSerializableExtra("product");
                     //cap nhat du lieu
-                    String sql = "UPDATE Product SET title = '"+product.getName()+"', content = '"+product.getPrice()+ "', email = '"+product.getEmail()+"', rela = '"+product.getRela()+"' WHERE id = "+product.getId();
+                    String sql = "UPDATE Product SET title = '" + product.getName()
+                            + "', content = '" + product.getPrice()
+                            + "', email = '" + product.getEmail()
+                            + "', rela = '" + product.getRela()
+                            + "' WHERE id = " + product.getId();
                     productManagement.myExecute(sql);
                     readProductManagement(productManagement);
                 }
@@ -141,12 +149,15 @@ public class MainActivity extends AppCompatActivity {
         String sql = "SELECT * FROM Product";
         Cursor cursor = productManagement.myGetSql(sql);
         arrProduct.clear();
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String name = cursor.getString(1);
             Integer price = cursor.getInt(2);
-            String email = cursor.getString(3);
-            String rela = cursor.getString(4);
+
+            // Kiểm tra NULL trước khi đọc email và rela
+            String email = cursor.isNull(3) ? "" : cursor.getString(3);
+            String rela = cursor.isNull(4) ? "" : cursor.getString(4);
+
             arrProduct.add(new Product(id, name, price, email, rela));
         }
         Log.d("DEBUG", "Number of products: " + arrProduct.size());
